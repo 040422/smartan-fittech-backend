@@ -1,9 +1,9 @@
 import Database from "better-sqlite3";
 
-// Create / open SQLite database file
+
 const db = new Database("poseDB.sqlite", { verbose: console.log });
 
-// Create table if not exists
+
 db.prepare(`
   CREATE TABLE IF NOT EXISTS poses (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
