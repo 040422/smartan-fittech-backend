@@ -14,7 +14,7 @@ dotenv.config();
 
 app.use("/api/poses", poseCRUDRoutes);
 
-await connectSQL(); // <-- NOW IT WORKS
+await connectSQL(); 
 
 mongoose.connect("mongodb://127.0.0.1:27017/poseDB");
 console.log("MongoDB Connected!");
