@@ -7,7 +7,6 @@ export const extractPose = async (req, res) => {
   try {
     console.log("Incoming request:", req.body);
 
-    // 1️⃣ Check if file exists
     if (!req.file) {
       console.log("❌ No file received");
       return res.status(400).json({ error: "No image uploaded. Use key 'image' in form-data." });
@@ -16,7 +15,7 @@ export const extractPose = async (req, res) => {
     const imagePath = req.file.path;
     console.log("📸 Image path:", imagePath);
 
-    // 2️⃣ Extract keypoints
+  
     let keypoints;
 
     try {
@@ -26,7 +25,7 @@ export const extractPose = async (req, res) => {
       return res.status(500).json({ error: "Pose extraction failed: " + err });
     }
 
-    // 3️⃣ Store in SQL
+  
     let sqlEntry;
 
     try {
@@ -36,7 +35,6 @@ export const extractPose = async (req, res) => {
       return res.status(500).json({ error: "SQL insert failed: " + err });
     }
 
-    // 4️⃣ Store image in Mongo
     try {
       const imgBuffer = fs.readFileSync(imagePath);
 
@@ -49,7 +47,7 @@ export const extractPose = async (req, res) => {
       return res.status(500).json({ error: "Mongo insert failed: " + err });
     }
 
-    // 5️⃣ SUCCESS
+    
     console.log("✅ Pose extraction complete");
     return res.json({
       message: "Pose extracted successfully",
