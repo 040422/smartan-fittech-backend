@@ -1,6 +1,5 @@
 import { SQL } from "../models/sqlModel.js";
 
-// GET all poses
 export const getAllPoses = (req, res) => {
   try {
     const data = SQL.getAll();
@@ -10,7 +9,6 @@ export const getAllPoses = (req, res) => {
   }
 };
 
-// GET pose by ID
 export const getPoseById = (req, res) => {
   try {
     const { id } = req.params;
@@ -26,7 +24,6 @@ export const getPoseById = (req, res) => {
   }
 };
 
-// UPDATE pose keypoints
 export const updatePose = (req, res) => {
   try {
     const { id } = req.params;
@@ -40,7 +37,6 @@ export const updatePose = (req, res) => {
   }
 };
 
-// DELETE pose
 export const deletePose = (req, res) => {
   try {
     const { id } = req.params;
